@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
@@ -69,21 +70,77 @@ public class Database {
         );
     }
     public void insertCardSeries(CardSeries cardSeries){
+        try (Connection connection = getConnection()){
+            String query = "INSERT INTO samlerkortserie (id, utgiver, utgitt, sport, antall) VALUES (?, ?, ?, ?, ?) ";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, cardSeries.getId());
+            statement.setString(2, cardSeries.getPublisher());
+            statement.setInt(3, cardSeries.getReleaseYear());
+            statement.setString(4, cardSeries.getSport());
+            statement.setInt(5, cardSeries.getAmountOfCardsInSeries());
+            statement.executeUpdate();
 
-        System.out.println(cardSeries);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void insertBaseballCard(BaseballCard baseballCard){
+        try(Connection connection = getConnection()){
+            String query = "INSERT INTO baseballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, Homeruns) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, baseballCard.getId());
+            statement.setInt(2, baseballCard.getCardSeriesId());
+            statement.setString(3, baseballCard.getCondition());
+            statement.setString(4, baseballCard.getPlayerName());
+            statement.setString(5, baseballCard.getClub());
+            statement.setInt(6, baseballCard.getSeasonsPlayed());
+            statement.setInt(7, baseballCard.getGamesPlayed());
+            statement.setInt(8, baseballCard.getHomeruns());
+            statement.executeUpdate();
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
 
-        System.out.println(baseballCard);
     }
     public void insertBasketballCard(BasketballCard basketballCard){
+        try(Connection connection = getConnection()){
+            String query = "INSERT INTO basketballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, FGPercent, FTPercent, Poengsnitt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, basketballCard.getId());
+            statement.setInt(2, basketballCard.getCardSeriesId());
+            statement.setString(3, basketballCard.getCondition());
+            statement.setString(4, basketballCard.getPlayerName());
+            statement.setString(5, basketballCard.getClub());
+            statement.setInt(6, basketballCard.getSeasonsPlayed());
+            statement.setInt(7, basketballCard.getGamesPlayed());
+            statement.setInt(8, basketballCard.getFgPercent());
+            statement.setInt(9, basketballCard.getFtPercent());
+            statement.setDouble(10, basketballCard.getAveragePoints());
+            statement.executeUpdate();
+        } catch (SQLException e){
+            throw new RuntimeException(e);
+        }
 
-        System.out.println(basketballCard);
     }
     public void insertFootballCard(FootballCard footballCard){
+        try(Connection connection = getConnection()){
+            String query = "INSERT INTO fotballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, Seriescoringer, Cupscoringer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, footballCard.getId());
+            statement.setInt(2, footballCard.getCardSeriesId());
+            statement.setString(3, footballCard.getCondition());
+            statement.setString(4, footballCard.getPlayerName());
+            statement.setString(5, footballCard.getClub());
+            statement.setInt(6, footballCard.getSeasonsPlayed());
+            statement.setInt(7, footballCard.getGamesPlayed());
+            statement.setInt(8, footballCard.getLeagueGoals());
+            statement.setInt(9, footballCard.getCupGoals());
+            statement.executeUpdate();
 
-        System.out.println(footballCard);
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
 

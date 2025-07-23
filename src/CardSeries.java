@@ -18,7 +18,7 @@ public class CardSeries {
 
     //Getters
 
-    public int getIdd(){return id;}
+    public int getId(){return id;}
     public String getPublisher(){return Publisher;}
     public int getReleaseYear(){return releaseYear;}
     public String getSport(){return sport;}
