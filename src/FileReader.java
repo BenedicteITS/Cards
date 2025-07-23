@@ -76,7 +76,6 @@ public class FileReader {
                     }
                     // Hopper over "-----" i tekstfilen
                     scanner.nextLine();
-
                 }
             } else {
                 System.out.println("Fant ikke kort:");
