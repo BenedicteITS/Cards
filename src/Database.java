@@ -11,8 +11,6 @@ import java.util.Properties;
 
 public class Database {
 
-
-
     //# Static
     static {
         try {
