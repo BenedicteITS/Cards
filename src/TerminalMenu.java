@@ -50,7 +50,7 @@ public class TerminalMenu
             switch (userChoice){
                 case 1 -> {
                     System.out.println("Metode for å skrive ut fotballkort");
-                    ReadFile.readFile();
+
                 }
                 case 2 ->  {
                     System.out.println("Metode for å skrive ut Baseballkort");

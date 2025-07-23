@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class ReadFile {
 
-    static private final Database database = new Database("sql/database.properties");
+    Database database = new Database("sql/database.properties");
 
-    ReadWriteDatabase readWriteDatabase = new ReadWriteDatabase();
+
     // mellomlagring av variabler som skal til databasen
 
 
@@ -33,7 +33,7 @@ public class ReadFile {
 
                     // Oppretter et objekt med informasjonen over
                     CardSeries cardSeries = new CardSeries(id, publisher, year, sport, amountOfCardsInSeries);
-                    ReadWriteDatabase.insertCardSeries(cardSeries);
+                    database.insertCardSeries(cardSeries);
                 }
 
             }
@@ -60,19 +60,19 @@ public class ReadFile {
                             int leagueGoals = Integer.parseInt(scanner.nextLine());
                             int  cupGoals = Integer.parseInt(scanner.nextLine());
                             FootballCard card = new FootballCard(id, cardSeriesId, condition, playerName, club, seasonsPlayed, gamesPlayed, sport, leagueGoals, cupGoals);
-                            ReadWriteDatabase.insertFootballCard(card);
+                            database.insertFootballCard(card);
                         }
                         case "Baseball" -> {
                             int homeruns = Integer.parseInt(scanner.nextLine());
                             BaseballCard card = new BaseballCard(id, cardSeriesId, condition, playerName, club, seasonsPlayed, gamesPlayed, sport, homeruns);
-
+                            database.insertBaseballCard(card);
                         }
                         case "Basketball" -> {
                             int fgPercent = Integer.parseInt(scanner.nextLine());
                             int ftPercent = Integer.parseInt(scanner.nextLine());
                             double averagePoints =  Double.parseDouble(scanner.nextLine());
                             BasketballCard card = new BasketballCard(id, cardSeriesId, condition, playerName, club, seasonsPlayed, gamesPlayed, sport, fgPercent, ftPercent, averagePoints);
-
+                            database.insertBasketballCard(card);
                         }
                         default -> {
                             System.out.println("ingenting funker");

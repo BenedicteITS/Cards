@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 
-public class Database
-{
+public class Database {
+
+
+
     //# Static
     static {
         try {
@@ -65,6 +67,23 @@ public class Database
                 this.properties.getProperty("username"),
                 this.properties.getProperty("password")
         );
+    }
+    public void insertCardSeries(CardSeries cardSeries){
+
+        System.out.println(cardSeries);
+    }
+
+    public void insertBaseballCard(BaseballCard baseballCard){
+
+        System.out.println(baseballCard);
+    }
+    public void insertBasketballCard(BasketballCard basketballCard){
+
+        System.out.println(basketballCard);
+    }
+    public void insertFootballCard(FootballCard footballCard){
+
+        System.out.println(footballCard);
     }
 
 
