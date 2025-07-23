@@ -1,6 +1,6 @@
+package model;
 
-public abstract class Card
-{
+public abstract class Card {
     private int id;
     private int cardSeriesId;
     private String condition;
@@ -11,11 +11,11 @@ public abstract class Card
     private String sport;
 
     //Constructor
-     public Card(int id, int cardSeriesId, String condition, String playerName, String club, int seasonsPlayed, int gamesPlayed, String sport){
+    public Card(int id, int cardSeriesId, String condition, String playerName, String club, int seasonsPlayed, int gamesPlayed, String sport) {
         this.id = id;
         this.cardSeriesId = cardSeriesId;
         this.condition = condition;
-        this.playerName =  playerName;
+        this.playerName = playerName;
         this.club = club;
         this.seasonsPlayed = seasonsPlayed;
         this.gamesPlayed = gamesPlayed;

@@ -1,4 +1,8 @@
 import com.mysql.cj.jdbc.Driver;
+import model.BaseballCard;
+import model.BasketballCard;
+import model.CardSeries;
+import model.FootballCard;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -56,7 +60,7 @@ public class Database {
 
 
     //# Methods
-    public Connection getConnection() throws SQLException {
+    private Connection getConnection() throws SQLException {
         // URI: jdbc:mysql://host:port/database
         return DriverManager.getConnection(
                 "jdbc:mysql://" + this.properties.getProperty("host")
@@ -67,8 +71,9 @@ public class Database {
                 this.properties.getProperty("password")
         );
     }
-    public void insertCardSeries(CardSeries cardSeries){
-        try (Connection connection = getConnection()){
+
+    public void insertCardSeries(CardSeries cardSeries) {
+        try (Connection connection = getConnection()) {
             String query = "INSERT INTO samlerkortserie (id, utgiver, utgitt, sport, antall) VALUES (?, ?, ?, ?, ?) ";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, cardSeries.getId());
@@ -83,8 +88,8 @@ public class Database {
         }
     }
 
-    public void insertBaseballCard(BaseballCard baseballCard){
-        try(Connection connection = getConnection()){
+    public void insertBaseballCard(BaseballCard baseballCard) {
+        try (Connection connection = getConnection()) {
             String query = "INSERT INTO baseballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, Homeruns) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, baseballCard.getId());
@@ -96,13 +101,14 @@ public class Database {
             statement.setInt(7, baseballCard.getGamesPlayed());
             statement.setInt(8, baseballCard.getHomeruns());
             statement.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
-    public void insertBasketballCard(BasketballCard basketballCard){
-        try(Connection connection = getConnection()){
+
+    public void insertBasketballCard(BasketballCard basketballCard) {
+        try (Connection connection = getConnection()) {
             String query = "INSERT INTO basketballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, FGPercent, FTPercent, Poengsnitt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, basketballCard.getId());
@@ -116,13 +122,14 @@ public class Database {
             statement.setInt(9, basketballCard.getFtPercent());
             statement.setDouble(10, basketballCard.getAveragePoints());
             statement.executeUpdate();
-        } catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
     }
-    public void insertFootballCard(FootballCard footballCard){
-        try(Connection connection = getConnection()){
+
+    public void insertFootballCard(FootballCard footballCard) {
+        try (Connection connection = getConnection()) {
             String query = "INSERT INTO fotballkort (id, Serie, Tilstand, Spillernavn, Klubb, Sesonger, Kamper, Seriescoringer, Cupscoringer) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, footballCard.getId());
@@ -136,7 +143,7 @@ public class Database {
             statement.setInt(9, footballCard.getCupGoals());
             statement.executeUpdate();
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

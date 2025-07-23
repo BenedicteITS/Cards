@@ -1,3 +1,5 @@
+package model;
+
 public class CardSeries {
     private int id;
     private String Publisher;
@@ -5,10 +7,7 @@ public class CardSeries {
     private String sport;
     private int amountOfCardsInSeries;
 
-
-
-    CardSeries(int id, String publisher, int releaseYear, String sport, int amountOfCards)
-    {
+    public CardSeries(int id, String publisher, int releaseYear, String sport, int amountOfCards) {
         this.id = id;
         Publisher = publisher;
         this.releaseYear = releaseYear;
@@ -16,17 +15,29 @@ public class CardSeries {
         this.amountOfCardsInSeries = amountOfCards;
     }
 
-    //Getters
+    public int getId() {
+        return id;
+    }
 
-    public int getId(){return id;}
-    public String getPublisher(){return Publisher;}
-    public int getReleaseYear(){return releaseYear;}
-    public String getSport(){return sport;}
-    public int getAmountOfCardsInSeries(){return amountOfCardsInSeries;}
+    public String getPublisher() {
+        return Publisher;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public String getSport() {
+        return sport;
+    }
+
+    public int getAmountOfCardsInSeries() {
+        return amountOfCardsInSeries;
+    }
 
     @Override
     public String toString() {
-        return "CardSeries{" +
+        return "model.CardSeries{" +
                 "id=" + id +
                 ", Publisher='" + Publisher + '\'' +
                 ", releaseYear=" + releaseYear +

@@ -4,9 +4,9 @@ public class Main
         //TerminalMenu.terminalMenu();
 
         // Test
-        ReadFile readFile = new ReadFile();
+        FileReader fileReader = new FileReader();
 
-        readFile.readFile();
+        fileReader.readFileAndInsertIntoDb();
 
     }
 }

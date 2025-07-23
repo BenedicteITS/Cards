@@ -1,22 +1,22 @@
+package model;
+
 public class BaseballCard extends Card {
 
-        private int homeruns;
+    private int homeruns;
 
-        BaseballCard(int id, int cardSeriesId, String condition, String playerName, String club, int seasonsPlayed, int gamesPlayed, String sport,int homeruns) {
+    public BaseballCard(int id, int cardSeriesId, String condition, String playerName, String club, int seasonsPlayed, int gamesPlayed, String sport, int homeruns) {
+        super(id, cardSeriesId, condition, playerName, club, seasonsPlayed, gamesPlayed, sport);
+        this.homeruns = homeruns;
+    }
 
-            super(id, cardSeriesId, condition, playerName, club, seasonsPlayed, gamesPlayed, sport);
+    public int getHomeruns() {
 
-            this.homeruns = homeruns;
-        }
-
-        //Getter
-        public int getHomeruns() {
-            return this.homeruns;
-        }
+        return this.homeruns;
+    }
 
     @Override
     public String toString() {
-        return "BaseballCard{" +
+        return "model.BaseballCard{" +
                 "id=" + getId() +
                 ", cardSeriesId=" + getCardSeriesId() +
                 ", condition='" + getCondition() + '\'' +
