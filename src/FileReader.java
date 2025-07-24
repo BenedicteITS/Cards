@@ -14,7 +14,6 @@ public class FileReader {
     public void readFileAndInsertIntoDb() {
         File file = new File("resources/samlerkort.txt");
 
-
         try (Scanner scanner = new Scanner((file))) {
             while (scanner.hasNextLine()) {
                 // Oppretter en variabel som leser neste linje
@@ -38,8 +37,6 @@ public class FileReader {
                         database.insertCardSeries(cardSeries);
                     }
                 }
-                scanner.nextLine();
-                line = scanner.nextLine();
 
                 if (line.equals("Kort:")) {
 
@@ -80,8 +77,6 @@ public class FileReader {
                         // Hopper over "-----" i tekstfilen
                         scanner.nextLine();
                     }
-                } else {
-                    System.out.println("Fant ikke kort:");
                 }
             }
         } catch (FileNotFoundException e) {
