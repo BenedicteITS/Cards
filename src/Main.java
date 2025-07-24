@@ -8,5 +8,7 @@ public class Main
 
         fileReader.readFileAndInsertIntoDb();
 
+
+
     }
 }

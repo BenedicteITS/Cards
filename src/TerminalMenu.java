@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class TerminalMenu {
     private static final Scanner userInput = new Scanner(System.in);
 
-    static void terminalMenu() {
+
+     void terminalMenu() {
 
 
         System.out.println("--------------------------------------------------------");
@@ -33,7 +34,7 @@ public class TerminalMenu {
     }
 
 
-    private static void chooseSportMenu() {
+    private void chooseSportMenu() {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
@@ -67,7 +68,7 @@ public class TerminalMenu {
     }
 
     //Metoden under er tatt utgangspunkt fra kode vist i forelesning: https://github.com/kristiania/PGR112v24/blob/main/code/solutions/database/terminal/src/Terminal.java#L17
-    private static int getNumberFromTerminalInput() {
+    private int getNumberFromTerminalInput() {
         try {
             return Integer.parseInt(TerminalMenu.userInput.nextLine());
         } catch (NumberFormatException e) {
