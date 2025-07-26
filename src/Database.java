@@ -229,7 +229,19 @@ public class Database {
 
     }
     // TODO: Skrive ut antall samlerkort registrert
-
+    public int getCardsAmount() {
+        int cardsAmount = 0;
+        try (Connection connection = getConnection()){
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT (select count(*) from baseballkort) + (select count(*) from basketballkort)+ (select count(*) from fotballkort) as total_rows");
+            while (resultSet.next()) {
+                cardsAmount = resultSet.getInt("total_rows");
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return cardsAmount;
+    }
     // TODO: Skrive ut informasjon om alle samlerkort i "mint condition"
 
 

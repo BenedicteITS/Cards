@@ -30,6 +30,7 @@ public class TerminalMenu {
                 }
                 case 2 -> {
                     System.out.println("Cards registered: ");
+                    printCardsAmount();
                 }
                 case 3 -> {
                     System.out.println("Cards in mint condition: ");
@@ -111,4 +112,8 @@ public class TerminalMenu {
         }
     }
 
+    private void printCardsAmount() {
+        int cardsAmount = database.getCardsAmount();
+        System.out.println("Cards amount: " + cardsAmount);
+    }
 }
