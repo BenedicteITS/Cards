@@ -16,16 +16,17 @@ public class BaseballCard extends Card {
 
     @Override
     public String toString() {
-        return "model.BaseballCard{" +
-                "id=" + getId() +
-                ", cardSeriesId=" + getCardSeriesId() +
-                ", condition='" + getCondition() + '\'' +
-                ", playerName='" + getPlayerName() + '\'' +
-                ", club='" + getClub() + '\'' +
-                ", seasonsPlayed=" + getSeasonsPlayed() +
-                ", gamesPlayed=" + getGamesPlayed() +
-                ", sport='" + getSport() + '\'' +
-                "homeruns=" + homeruns +
-                '}';
+        return "-------------------------------------------------------- \n" +
+                "Basketball card: \n"
+                + "Id: " + getId() + "\n" +
+                "CardSeries Id: " + getCardSeriesId() + "\n" +
+                "Condition: " + getCondition() + "\n"+
+                "PlayerName: " + getPlayerName() + "\n"+
+                "Club: " + getClub() + "\n"+
+                "SeasonsPlayed: " + getSeasonsPlayed() + "\n"+
+                "GamesPlayed: " + getGamesPlayed() + "\n"+
+                "Sport: " + getSport() + "\n"+
+                "Homeruns: " + homeruns + "\n" +
+                "-------------------------------------------------------- \n";
     }
 }

@@ -1,12 +1,14 @@
 public class Main
 {
     public static void main(String[] args) {
-        //TerminalMenu.terminalMenu();
+
+        TerminalMenu terminalMenu = new TerminalMenu();
+        terminalMenu.terminalMenu();
 
         // Test
-        FileReader fileReader = new FileReader();
+        //FileReader fileReader = new FileReader();
 
-        fileReader.readFileAndInsertIntoDb();
+        //fileReader.readFileAndInsertIntoDb();
 
 
 

@@ -1,44 +1,53 @@
+import model.BaseballCard;
+import model.BasketballCard;
+import model.Card;
+import model.FootballCard;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class TerminalMenu {
     private static final Scanner userInput = new Scanner(System.in);
 
 
-     void terminalMenu() {
+    public void terminalMenu() {
+         boolean running = true;
+         while (running){
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Menu:");
+            System.out.println("Select one of the alternatives below");
+            System.out.println("1: Choose a sport to see all cards from given sport");
+            System.out.println("2: See amount of cards registered");
+            System.out.println("3: See all cards with mint condition");
+            System.out.println("4: End program");
+            System.out.println("--------------------------------------------------------");
 
+            int userChoice = getNumberFromTerminalInput();
+            switch (userChoice) {
+                case 1 -> {
+                    chooseSportMenu();
+                }
+                case 2 -> {
+                    System.out.println("Cards registered: ");
+                }
+                case 3 -> {
+                    System.out.println("Cards in mint condition: ");
+                }
+                case 4 -> {
+                    running = false;
+                    System.out.println("Program ended");
 
-        System.out.println("--------------------------------------------------------");
-        System.out.println("Menu:");
-        System.out.println("Select one of the alternatives below");
-        System.out.println("1: Choose a sport to see all cards from given sport");
-        System.out.println("2: See amount of cards registered");
-        System.out.println("3: See all cards with mint condition");
-        System.out.println("4: End program");
-        System.out.println("--------------------------------------------------------");
-
-        int userChoice = getNumberFromTerminalInput();
-        switch (userChoice) {
-            case 1 -> {
-                chooseSportMenu();
-            }
-            case 2 -> {
-                System.out.println("Cards registered: ");
-            }
-            case 3 -> {
-                System.out.println("Cards in mint condition: ");
-            }
-            case 4 -> {
-                System.out.println("Program ended");
+                }
             }
         }
     }
 
 
     private void chooseSportMenu() {
-        Scanner scanner = new Scanner(System.in);
-        boolean exit = false;
+        boolean running = true;
 
-        while (!exit) {
+        while (running) {
             System.out.println("Choose what type of sport you want to see: ");
             System.out.println("1: Football");
             System.out.println("2: Baseball");
@@ -46,21 +55,19 @@ public class TerminalMenu {
             System.out.println("4: Go back to main menu");
 
             int userChoice = getNumberFromTerminalInput();
-            ;
 
             switch (userChoice) {
                 case 1 -> {
-                    System.out.println("Metode for å skrive ut fotballkort");
-
+                    printFootballCards();
                 }
                 case 2 -> {
-                    System.out.println("Metode for å skrive ut Baseballkort");
+                    printBaseballCards();
                 }
                 case 3 -> {
-                    System.out.println("Metode for å skrive ut Basketballkort");
+                    printBasketballCards();
                 }
                 case 4 -> {
-                    exit = true;
+                    running = false;
                     terminalMenu();
                 }
             }
@@ -76,4 +83,32 @@ public class TerminalMenu {
             return getNumberFromTerminalInput();
         }
     }
+
+    private void printFootballCards() {
+        Database database = new Database("sql/database.properties");
+        List<FootballCard> footballCards = database.getFootballCards();
+        int amountOfCards = footballCards.size();
+        for(int i = 0; i < amountOfCards; i++){
+            System.out.print(footballCards.get(i));
+        }
+    }
+
+    private void printBasketballCards() {
+        Database database = new Database("sql/database.properties");
+        List<BasketballCard> basketballCards = database.getBasketballCards();
+        int amountOfCards = basketballCards.size();
+        for(int i = 0; i < amountOfCards; i++){
+            System.out.print(basketballCards.get(i));
+        }
+    }
+
+    private void printBaseballCards() {
+        Database database = new Database("sql/database.properties");
+        List<BaseballCard> baseballCards = database.getBaseballCards();
+        int amountOfCards = baseballCards.size();
+        for(int i = 0; i < amountOfCards; i++){
+            System.out.print(baseballCards.get(i));
+        }
+    }
+
 }

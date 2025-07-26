@@ -1,15 +1,10 @@
 import com.mysql.cj.jdbc.Driver;
-import model.BaseballCard;
-import model.BasketballCard;
-import model.CardSeries;
-import model.FootballCard;
+import model.*;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -147,6 +142,91 @@ public class Database {
             throw new RuntimeException(e);
         }
     }
+
+    public List<FootballCard> getFootballCards() {
+        List<FootballCard>  footballCards = new ArrayList<>();
+
+        try (Connection connection = getConnection()){
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM fotballkort");
+            while (resultSet.next()) {
+                FootballCard footballCard = new FootballCard(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("serie"),
+                        resultSet.getString("tilstand"),
+                        resultSet.getString("spillernavn"),
+                        resultSet.getString("klubb"),
+                        resultSet.getInt("sesonger"),
+                        resultSet.getInt("kamper"),
+                        "football",
+                        resultSet.getInt("seriescoringer"),
+                        resultSet.getInt("cupscoringer")
+                );
+                footballCards.add(footballCard);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return footballCards;
+    }
+
+    public List<BasketballCard> getBasketballCards() {
+        List<BasketballCard>  basketballCards = new ArrayList<>();
+
+        try(Connection connection = getConnection() ) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM basketballkort");
+            while (resultSet.next()) {
+                BasketballCard basketballCard = new BasketballCard(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("serie"),
+                        resultSet.getString("tilstand"),
+                        resultSet.getString("spillernavn"),
+                        resultSet.getString("klubb"),
+                        resultSet.getInt("kamper"),
+                        resultSet.getInt("sesonger"),
+                        "Basketball",
+                        resultSet.getInt("fgpercent"),
+                        resultSet.getInt("ftpercent"),
+                        resultSet.getDouble("poengsnitt")
+
+                );
+                basketballCards.add(basketballCard);
+            }
+        }catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+        return basketballCards;
+    }
+
+    public List<BaseballCard> getBaseballCards() {
+        List<BaseballCard>  baseballCards = new ArrayList<>();
+
+        try(Connection connection = getConnection()){
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM baseballkort");
+            while (resultSet.next()) {
+                BaseballCard baseballCard = new BaseballCard(
+                        resultSet.getInt("id"),
+                        resultSet.getInt("serie"),
+                        resultSet.getString("tilstand"),
+                        resultSet.getString("spillernavn"),
+                        resultSet.getString("klubb"),
+                        resultSet.getInt("kamper"),
+                        resultSet.getInt("sesonger"),
+                        "Baseball",
+                        resultSet.getInt("homeruns")
+                );
+                baseballCards.add(baseballCard);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return baseballCards;
+    }
+    // TODO: Skrive ut antall samlerkort registrert
+
+    // TODO: Skrive ut informasjon om alle samlerkort i "mint condition"
 
 
 }

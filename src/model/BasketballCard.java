@@ -27,17 +27,19 @@ public class BasketballCard extends Card {
 
     @Override
     public String toString() {
-        return "model.BasketballCard{" + "id=" + getId() +
-                ", cardSeriesId=" + getCardSeriesId() +
-                ", condition='" + getCondition() + '\'' +
-                ", playerName='" + getPlayerName() + '\'' +
-                ", club='" + getClub() + '\'' +
-                ", seasonsPlayed=" + getSeasonsPlayed() +
-                ", gamesPlayed=" + getGamesPlayed() +
-                ", sport='" + getSport() + '\'' +
-                "fgPercent=" + fgPercent +
-                ", ftPercent=" + ftPercent +
-                ", averagePoints=" + averagePoints +
-                '}';
+        return "-------------------------------------------------------- \n" +
+                "Basketball card: \n"
+                + "Id: " + getId() + "\n" +
+                "CardSeries Id: " + getCardSeriesId() + "\n" +
+                "Condition: " + getCondition() + "\n"+
+                "PlayerName: " + getPlayerName() + "\n"+
+                "Club: " + getClub() + "\n"+
+                "SeasonsPlayed: " + getSeasonsPlayed() + "\n"+
+                "GamesPlayed: " + getGamesPlayed() + "\n"+
+                "Sport: " + getSport() + "\n"+
+                "Fg Percent: " + getFgPercent() + "\n"+
+                "Ft Percent: " + getFtPercent() + "\n"+
+                "Average Points: " + getAveragePoints() + "\n" +
+                "-------------------------------------------------------- \n";
     }
 }

@@ -22,17 +22,18 @@ public class FootballCard extends Card {
 
     @Override
     public String toString() {
-        return "model.FootballCard{"
-                + "id=" + getId() +
-                ", cardSeriesId=" + getCardSeriesId() +
-                ", condition='" + getCondition() + '\'' +
-                ", playerName='" + getPlayerName() + '\'' +
-                ", club='" + getClub() + '\'' +
-                ", seasonsPlayed=" + getSeasonsPlayed() +
-                ", gamesPlayed=" + getGamesPlayed() +
-                ", sport='" + getSport() + '\'' +
-                "leagueGoals=" + leagueGoals +
-                ", cupGoals=" + cupGoals +
-                '}';
+        return "-------------------------------------------------------- \n" +
+                "Football card: \n"
+                + "Id: " + getId() + "\n" +
+                "CardSeries Id: " + getCardSeriesId() + "\n" +
+                "Condition: " + getCondition() + "\n"+
+                "PlayerName: " + getPlayerName() + "\n"+
+                "Club: " + getClub() + "\n"+
+                "SeasonsPlayed: " + getSeasonsPlayed() + "\n"+
+                "GamesPlayed: " + getGamesPlayed() + "\n"+
+                "Sport: " + getSport() + "\n"+
+                "LeagueGoals: " + leagueGoals + "\n"+
+                "CupGoals: " + cupGoals + "\n"+
+                "-------------------------------------------------------- \n";
     }
 }
