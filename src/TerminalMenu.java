@@ -9,11 +9,11 @@ import java.util.Scanner;
 
 public class TerminalMenu {
     private static final Scanner userInput = new Scanner(System.in);
-
+    private final Database database = new Database("sql/database.properties");
 
     public void terminalMenu() {
-         boolean running = true;
-         while (running){
+        boolean running = true;
+        while (running) {
             System.out.println("--------------------------------------------------------");
             System.out.println("Menu:");
             System.out.println("Select one of the alternatives below");
@@ -85,28 +85,28 @@ public class TerminalMenu {
     }
 
     private void printFootballCards() {
-        Database database = new Database("sql/database.properties");
+
         List<FootballCard> footballCards = database.getFootballCards();
         int amountOfCards = footballCards.size();
-        for(int i = 0; i < amountOfCards; i++){
+        for (int i = 0; i < amountOfCards; i++) {
             System.out.print(footballCards.get(i));
         }
     }
 
     private void printBasketballCards() {
-        Database database = new Database("sql/database.properties");
+
         List<BasketballCard> basketballCards = database.getBasketballCards();
         int amountOfCards = basketballCards.size();
-        for(int i = 0; i < amountOfCards; i++){
+        for (int i = 0; i < amountOfCards; i++) {
             System.out.print(basketballCards.get(i));
         }
     }
 
     private void printBaseballCards() {
-        Database database = new Database("sql/database.properties");
+
         List<BaseballCard> baseballCards = database.getBaseballCards();
         int amountOfCards = baseballCards.size();
-        for(int i = 0; i < amountOfCards; i++){
+        for (int i = 0; i < amountOfCards; i++) {
             System.out.print(baseballCards.get(i));
         }
     }

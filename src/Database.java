@@ -144,9 +144,9 @@ public class Database {
     }
 
     public List<FootballCard> getFootballCards() {
-        List<FootballCard>  footballCards = new ArrayList<>();
+        List<FootballCard> footballCards = new ArrayList<>();
 
-        try (Connection connection = getConnection()){
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM fotballkort");
             while (resultSet.next()) {
@@ -163,17 +163,19 @@ public class Database {
                         resultSet.getInt("cupscoringer")
                 );
                 footballCards.add(footballCard);
+
             }
-        }catch (SQLException e){
+            return footballCards;
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return footballCards;
+
     }
 
     public List<BasketballCard> getBasketballCards() {
-        List<BasketballCard>  basketballCards = new ArrayList<>();
+        List<BasketballCard> basketballCards = new ArrayList<>();
 
-        try(Connection connection = getConnection() ) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM basketballkort");
             while (resultSet.next()) {
@@ -193,16 +195,17 @@ public class Database {
                 );
                 basketballCards.add(basketballCard);
             }
-        }catch (SQLException e){
+            return basketballCards;
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return basketballCards;
+
     }
 
     public List<BaseballCard> getBaseballCards() {
-        List<BaseballCard>  baseballCards = new ArrayList<>();
+        List<BaseballCard> baseballCards = new ArrayList<>();
 
-        try(Connection connection = getConnection()){
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM baseballkort");
             while (resultSet.next()) {
@@ -219,10 +222,11 @@ public class Database {
                 );
                 baseballCards.add(baseballCard);
             }
+            return baseballCards;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return baseballCards;
+
     }
     // TODO: Skrive ut antall samlerkort registrert
 
